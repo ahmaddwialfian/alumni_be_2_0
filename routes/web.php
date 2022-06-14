@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlumniController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/alumni', [AlumniController::class, 'index']);
+Route::post('/alumni', [AlumniController::class, 'store']);
+Route::delete('/alumni/{id}', [AlumniController::class, 'destroy']);
+Route::patch('/alumni/{id}', [AlumniController::class, 'update']);
