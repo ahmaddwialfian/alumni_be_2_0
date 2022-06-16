@@ -15,6 +15,13 @@ class AlumniController extends Controller
     public function index()
     {
         //
+        $alumnis = Alumni::all();
+
+        $data = [
+            'alumnis' => $alumnis,
+        ];
+
+        return view('alumni.index', $data);
     }
 
     /**
@@ -25,6 +32,7 @@ class AlumniController extends Controller
     public function create()
     {
         //
+        return view('alumni.create');
     }
 
     /**
@@ -37,16 +45,18 @@ class AlumniController extends Controller
     {
         //
         $request->validate([
-                'nim' => 'required|unique:alumnis',
-                'nama' => 'required',
-                'email' => 'required|email',
-                'alamat' => 'required',
-                'tgl_lahir' => 'required|date',
-                'no_telepon' => 'required',
-                'nik' => 'required'
+            'nim' => 'required|unique:alumnis',
+            'nama' => 'required',
+            'email' => 'required|email',
+            'alamat' => 'required',
+            'tgl_lahir' => 'required|date',
+            'no_telepon' => 'required',
+            'nik' => 'required'
         ]);
 
         Alumni::create($request->all());
+
+        return redirect()->route('alumni.index')->with('success', 'Data alumni berhasil ditambahkan');
     }
 
     /**
@@ -69,6 +79,11 @@ class AlumniController extends Controller
     public function edit(Alumni $alumni)
     {
         //
+        $data = [
+            'alumni' => $alumni,
+        ];
+        
+        return view('alumni.edit', $data);
     }
 
     /**
@@ -78,20 +93,22 @@ class AlumniController extends Controller
      * @param  \App\Models\Alumni  $alumni
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Alumni $alumni)
     {
         //
         $request->validate([
-                'nim' => 'required|unique:alumnis,nim,' . $id,
-                'nama' => 'required',
-                'email' => 'required|email',
-                'alamat' => 'required',
-                'tgl_lahir' => 'required|date',
-                'no_telepon' => 'required',
-                'nik' => 'required'
+            'nim' => 'required|unique:alumnis,nim,' . $alumni->id,
+            'nama' => 'required',
+            'email' => 'required|email',
+            'alamat' => 'required',
+            'tgl_lahir' => 'required|date',
+            'no_telepon' => 'required',
+            'nik' => 'required'
         ]);
 
-        Alumni::find($id)->update($request->all());
+        $alumni->update($request->all());
+
+        return redirect()->route('alumni.index')->with('success', 'Data alumni berhasil diubah');
     }
 
     /**

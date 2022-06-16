@@ -18,7 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/alumni', [AlumniController::class, 'index']);
-Route::post('/alumni', [AlumniController::class, 'store']);
-Route::delete('/alumni/{id}', [AlumniController::class, 'destroy']);
-Route::patch('/alumni/{id}', [AlumniController::class, 'update']);
+Route::prefix('alumni')->group(function () {
+    Route::get('/', [AlumniController::class, 'index'])->name('alumni.index');
+    Route::post('/', [AlumniController::class, 'store'])->name('alumni.store');
+    Route::get('/create', [AlumniController::class, 'create'])->name('alumni.create');
+    Route::get('/{alumni}', [AlumniController::class, 'show'])->name('alumni.show');
+    Route::get('/{alumni}/edit', [AlumniController::class, 'edit'])->name('alumni.edit');
+    Route::patch('/{alumni}/edit', [AlumniController::class, 'update'])->name('alumni.update');
+    Route::delete('/{alumni}', [AlumniController::class, 'destroy'])->name('alumni.destroy');
+});
