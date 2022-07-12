@@ -1,0 +1,4 @@
+[submodule "siakad-helper"]
+	path = siakad-helper
+	url = http://gitlab.sevima.com:8888/bootcamp/siakad-helper.git
+	branch = master
