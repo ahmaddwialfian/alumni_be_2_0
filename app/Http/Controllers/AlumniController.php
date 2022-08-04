@@ -15,13 +15,13 @@ class AlumniController extends Controller
     public function index()
     {
         //
-        $alumnis = Alumni::all();
+        // $alumnis = Alumni::all();
 
-        $data = [
-            'alumnis' => $alumnis,
-        ];
+        // $data = [
+        //     'alumnis' => $alumnis,
+        // ];
 
-        return view('alumni.index', $data);
+        // return view('alumni.index', $data);
     }
 
     /**
