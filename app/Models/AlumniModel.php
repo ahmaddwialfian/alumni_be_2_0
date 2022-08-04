@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Siakad\Model;
 
-class Alumni extends Model
+class AlumniModel extends Model
 {
     use HasFactory;
 

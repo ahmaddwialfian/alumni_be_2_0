@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alumni;
+use App\Models\AlumniModel;
 use Illuminate\Http\Request;
+use Src\Alumni\Domain\Entities\Alumni;
 
 class AlumniController extends Controller
 {
@@ -65,7 +66,7 @@ class AlumniController extends Controller
      * @param  \App\Models\Alumni  $alumni
      * @return \Illuminate\Http\Response
      */
-    public function show(Alumni $alumni)
+    public function show($id)
     {
         //
     }
@@ -120,6 +121,6 @@ class AlumniController extends Controller
     public function destroy($id)
     {
         //
-        Alumni::find($id)->delete();
+        AlumniModel::find($id)->delete();
     }
 }
