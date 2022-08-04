@@ -8,6 +8,16 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 class Kernel extends ConsoleKernel
 {
     /**
+     * The Artisan commands provided by the application.
+     *
+     * @var array
+     */
+    protected $commands = [
+        \Siakad\Commands\NewAllCommand::class,
+        \Siakad\Commands\NewEntityCommand::class,
+    ];
+    
+    /**
      * Define the application's command schedule.
      *
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
